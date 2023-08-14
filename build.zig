@@ -12,6 +12,9 @@ pub fn build(b: *std.build.Builder) void {
     const mode = b.standardReleaseOptions();
 
     const exe = b.addExecutable("monkey-zig", "src/main.zig");
+    exe.addLibraryPath("repel/target/release");
+    exe.linkSystemLibrary("repel");
+    exe.linkLibC();
     exe.setTarget(target);
     exe.setBuildMode(mode);
     exe.install();
