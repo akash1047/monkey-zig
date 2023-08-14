@@ -4,9 +4,19 @@ pub const Kind = enum {
 
     ident,
     intLiteral,
+    floatLiteral,
 
     assign,
     plus,
+    minus,
+    bang,
+    asterisk,
+    slash,
+
+    equal,
+    notEqual,
+    lessThan,
+    greaterThan,
 
     comma,
     semicolon,
@@ -18,6 +28,11 @@ pub const Kind = enum {
 
     fnKeyword,
     letKeyword,
+    trueKeyword,
+    falseKeyword,
+    ifKeyword,
+    elseKeyword,
+    returnKeyword,
 };
 
 /// Token
@@ -29,3 +44,17 @@ pub const Token = struct {
     kind: Kind,
     span: []const u8,
 };
+
+pub fn charToken(k: Kind, s: []const u8) Token {
+    return .{
+        .kind = k,
+        .span = s[0..1],
+    };
+}
+
+pub fn wordToken(k: Kind, s: []const u8, len: usize) Token {
+    return .{
+        .kind = k,
+        .span = s[0..len],
+    };
+}
