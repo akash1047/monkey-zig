@@ -20,11 +20,13 @@ pub fn main() !void {
             break;
         };
 
-        var lexer = Lexer.new(input);
+        print("input: {s}\n", .{input});
 
-        var tok = lexer.nextToken();
-        while (tok.kind != .eof) : (tok = lexer.nextToken()) {
-            print("Token( kind={}, value=\"{s}\" )\n", .{ tok.kind, tok.span });
-        }
+        // var lexer = Lexer.new(input);
+        //
+        // var tok = lexer.nextToken();
+        // while (tok.kind != .eof) : (tok = lexer.nextToken()) {
+        //     print("Token( kind={}, value=\"{s}\" )\n", .{ tok.kind, tok.span });
+        // }
     }
 }

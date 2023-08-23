@@ -1,60 +1,44 @@
 pub const Kind = enum {
-    illegal,
-    eof,
+    Illegal,
+    Eof,
 
-    ident,
-    intLiteral,
-    floatLiteral,
+    Ident,
+    Int,
+    Float,
+    String,
 
-    assign,
-    plus,
-    minus,
-    bang,
-    asterisk,
-    slash,
+    Assign,
+    Plus,
+    Minus,
+    Bang,
+    Asterisk,
+    Slash,
 
-    equal,
-    notEqual,
-    lessThan,
-    greaterThan,
+    Eq,
+    NEq,
+    LT,
+    GT,
+    LEq,
+    GEq,
 
-    comma,
-    semicolon,
+    Comma,
+    Semicolon,
 
-    leftParenthesis,
-    rightParenthesis,
-    leftBrace,
-    rightBrace,
+    Lparan,
+    Rparan,
+    Lbrace,
+    Rbrace,
 
-    fnKeyword,
-    letKeyword,
-    trueKeyword,
-    falseKeyword,
-    ifKeyword,
-    elseKeyword,
-    returnKeyword,
+    Fn,
+    Let,
+    True,
+    False,
+    If,
+    Else,
+    Return,
 };
 
-/// Token
-///
-/// fields:
-/// kind is enum which identifies what kind of token is it
-/// span is the part of actual source code
 pub const Token = struct {
     kind: Kind,
-    span: []const u8,
+    literal: []const u8,
 };
-
-pub fn charToken(k: Kind, s: []const u8) Token {
-    return .{
-        .kind = k,
-        .span = s[0..1],
-    };
-}
-
-pub fn wordToken(k: Kind, s: []const u8, len: usize) Token {
-    return .{
-        .kind = k,
-        .span = s[0..len],
-    };
-}
